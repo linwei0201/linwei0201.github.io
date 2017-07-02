@@ -1,4 +1,8 @@
-
+---
+createTime : 2017/06/28
+author : linwei0201
+title : mac快捷键
+---
 
 
 > ⌘（command）、⌥（option）、⇧（shift）、⇪（caps lock）、⌃（control）、↩（return）、⌅（enter）

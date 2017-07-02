@@ -52,9 +52,9 @@ const getAllMarkdownFile = function(filePath){
                           .filter(str => str.indexOf('author') >= 0)[0]
                           || ''
 
-    const createTime = createTimeStr.split('=')[1].trim();
-    const title = titleStr.split('=')[1].trim();
-    const author = authorStr.split('=')[1].trim();
+    const createTime = createTimeStr.split(':')[1].trim();
+    const title = titleStr.split(':')[1].trim();
+    const author = authorStr.split(':')[1].trim();
     const filename = path.basename(mdPath, ".md");
 
     return {

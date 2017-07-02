@@ -30,7 +30,7 @@ export default class extends Page {
     const arr = data.split("\n");
     arr.forEach(v => {
       if(!!v.trim()){
-        const temp = v.split("=");
+        const temp = v.split(":");
         obj[temp[0].trim()] = temp[1].trim();
       }
     })
