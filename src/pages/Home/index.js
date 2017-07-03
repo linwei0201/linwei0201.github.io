@@ -62,7 +62,7 @@ export default class Index extends Page {
                       <div className="clearfix"></div>
                       <h2 className="section-heading">{v.title}<br />by {v.author || "匿名"}</h2>
                       <p className="lead">假数据文章摘要</p>
-                      <a href={`/blog/${v.filename}`}>详细信息</a>
+                      <a href={`#/blog/${v.filename}`}>详细信息</a>
                     </div>
                     <div className="col-lg-5 col-lg-offset-2 col-sm-6">
                       <img className="img-responsive" src="resources/ipad.png" alt="" />

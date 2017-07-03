@@ -40,29 +40,25 @@ const getAllMarkdownFile = function(filePath){
       charset: 'utf-8'
     }).toString()
 
-    let createTimeStr = content.split('\n')
-                               .filter(str => str.indexOf('createTime') >= 0)[0]
-                          || `${new Date().toLocaleString()}`
 
-    let titleStr = content.split('\n')
-                          .filter(str => str.indexOf('title') >= 0)[0]
-                          || ''
+    const start = content.indexOf("---");
+    const end = content.indexOf("---", start+3) + 3;
+    let header = content.substring(start, end),
+        obj = {};
+        header = header.substring(3, header.length - 3);
+    const arr = header.split("\n");
+    arr.forEach(v => {
+      if(!!v.trim()){
+        const temp = v.split(":");
+        obj[temp[0].trim()] = temp[1].trim();
+      }
+    })
 
-    let authorStr = content.split('\n')
-                          .filter(str => str.indexOf('author') >= 0)[0]
-                          || ''
-
-    const createTime = createTimeStr.split(':')[1].trim();
-    const title = titleStr.split(':')[1].trim();
-    const author = authorStr.split(':')[1].trim();
     const filename = path.basename(mdPath, ".md");
 
-    return {
-      filename: filename,
-      createTime,
-      title,
-      author
-    }
+    return Object.assign(obj, {
+      filename
+    })
   })
 
   //4.按照时间从大到小排序
