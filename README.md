@@ -1,4 +1,3 @@
-#heheda
+# Miss vivians blog
 
-> A Zola Application
-> with ♥︎ by lianjia-fe
+基于webpack react搭建的博客系统
