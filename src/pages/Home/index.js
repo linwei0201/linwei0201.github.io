@@ -16,6 +16,8 @@ export default class Index extends Page {
   }
 
   render () {
+    let env = process.env.NODE_ENV;
+    let prefix = (process.env.NODE_ENV == "development") ? "" : "https://linwei0201.github.io/dist/";
     return (
       <div>
         <div className="intro-header">
@@ -66,7 +68,7 @@ export default class Index extends Page {
                       <a href={`#/blog/${v.filename}`}>查看更多</a>
                     </div>
                     <div className="col-lg-5 col-lg-offset-2 col-sm-6">
-                      <img className="img-responsive" src="resources/ipad.png" alt="" />
+                      <img className="img-responsive" src={`${prefix}resources/ipad.png`} alt="" />
                     </div>
                   </div>
                 </div>
