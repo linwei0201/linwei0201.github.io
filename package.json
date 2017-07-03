@@ -22,6 +22,7 @@
     "devConfig": "./webpack/config.dev.js",
     "prodConfig": "./webpack/config.prod.js",
     "favico": "",
-    "noHash": true
+    "noHash": true,
+    "deps": "src/resources"
   }
 }
