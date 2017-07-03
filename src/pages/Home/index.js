@@ -30,9 +30,9 @@ export default class Index extends Page {
                   <hr className="intro-divider" />
                   <ul className="list-inline intro-social-buttons">
                     <li>
-                      <a href="https://twitter.com/SBootstrap" className="btn btn-default btn-lg">
+                      <a href="http://weibo.com/p/1005051727199593/home" className="btn btn-default btn-lg">
                         <i className="fa fa-twitter fa-fw"></i>
-                        <span className="network-name">Twitter</span>
+                        <span className="network-name">WEIBO</span>
                       </a>
                     </li>
                     <li>
@@ -42,9 +42,9 @@ export default class Index extends Page {
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="btn btn-default btn-lg">
+                      <a href="https://www.zhihu.com/people/nan-guo-90-37" className="btn btn-default btn-lg">
                         <i className="fa fa-linkedin fa-fw"></i>
-                        <span className="network-name">Linkedin</span>
+                        <span className="network-name">ZHIHU</span>
                       </a>
                     </li>
                   </ul>
