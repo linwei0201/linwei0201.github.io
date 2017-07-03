@@ -31,7 +31,7 @@ export default class extends Page {
 
                   <h3 className="post-subtitle">{v.subtitle}</h3>
 
-                  <div className="post-content-preview">{v.abstract}</div>
+                  <div className="post-content-preview">{v.summary}</div>
               </a>
               <p className="post-meta">Posted by {v.author} on {v.createTime}</p>
             </div>

@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const summarize = require('summarize-markdown')
 
 const ARTICLE_PATH = path.join(__dirname, '..', 'article');
 
@@ -36,7 +37,7 @@ const getAllMarkdownFile = function(filePath){
 
   const mdFiles = markdownFilePath.map(mdPath => {
     //3.读取所有文件内容，查找文件内容里面表示的创建时间，如果没有，默认为今天
-    const content = fs.readFileSync(mdPath, {
+    let content = fs.readFileSync(mdPath, {
       charset: 'utf-8'
     }).toString()
 
@@ -45,8 +46,12 @@ const getAllMarkdownFile = function(filePath){
     const end = content.indexOf("---", start+3) + 3;
     let header = content.substring(start, end),
         obj = {};
-        header = header.substring(3, header.length - 3);
+
+    content = summarize(content.replace(header, ""))
+              .substring(0, 300);
+    header = header.substring(3, header.length - 3);
     const arr = header.split("\n");
+
     arr.forEach(v => {
       if(!!v.trim()){
         const temp = v.split(":");
@@ -57,7 +62,8 @@ const getAllMarkdownFile = function(filePath){
     const filename = path.basename(mdPath, ".md");
 
     return Object.assign(obj, {
-      filename
+      filename,
+      summary: `${content}...`
     })
   })
 

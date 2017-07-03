@@ -5,6 +5,7 @@
  */
 
 import { React, Page } from 'zola'
+import styles from './index.styl'
 
 const ARTICLE_LIST = MY_ARTICLE_LIST.slice(0, 3);
 
@@ -61,8 +62,8 @@ export default class Index extends Page {
                       <hr className="section-heading-spacer" />
                       <div className="clearfix"></div>
                       <h2 className="section-heading">{v.title}<br />by {v.author || "匿名"}</h2>
-                      <p className="lead">假数据文章摘要</p>
-                      <a href={`#/blog/${v.filename}`}>详细信息</a>
+                      <p className="lead">{v.summary}</p>
+                      <a href={`#/blog/${v.filename}`}>查看更多</a>
                     </div>
                     <div className="col-lg-5 col-lg-offset-2 col-sm-6">
                       <img className="img-responsive" src="resources/ipad.png" alt="" />
