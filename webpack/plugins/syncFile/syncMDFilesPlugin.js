@@ -13,30 +13,37 @@ var path = require('path')
 var fs =   require('fs')
 var watch = require('watch')
 var getAllMarkdownFile = require('./getArticles');
+let curContent = "";
 
-const ARTICLE_PATH = path.join(__dirname, '../..', 'article');
-const WRITE_PATH = path.join(__dirname, '../../data/article.js');
+const ARTICLE_PATH = path.join(__dirname, '../../..', 'article');
+const WRITE_PATH = path.join(__dirname, '../../../src/data/article.js');
 
 function articleToData(){
   const list = getAllMarkdownFile(ARTICLE_PATH)
   let res = [];
   list.forEach(v => {
     res.push(`${objToString(v)}`)
-  })
+  });
   return `export default [\n${res.join(',\n')}\n]`
 }
 
 function objToString(obj){
   let res = [];
   for(let key in obj){
-    res.push(`\t\t${key}: '${obj[key]}'`)
+    res.push(`\t\t${key}: ${JSON.stringify(obj[key])}`)
   }
-  res.push(`\t\tcomponent: () => System.import('../article/${obj.path}')`);
+  res.push(`\t\tcomponent: () => System.import('article/${obj.path}')`);
   return `\t{\n${res.join(',\n')}\n\t}`
 }
 
 function writeFile(){
-  fs.writeFile(WRITE_PATH, articleToData())
+  let content = articleToData();
+  if(curContent == content){
+    return false;
+  }
+  curContent = content;
+
+  fs.writeFile(WRITE_PATH, content);
 }
 
 function syncMDFilePlugin(){

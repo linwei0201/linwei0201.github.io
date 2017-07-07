@@ -2,8 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const summarize = require('summarize-markdown')
 
-const ARTICLE_PATH = path.join(__dirname, '..', 'article');
-
 const getAllMarkdownFile = function(filePath){
 
   //1.挨个查找文件
@@ -48,7 +46,7 @@ const getAllMarkdownFile = function(filePath){
         obj = {};
 
     content = summarize(content.replace(header, ""))
-              .substring(0, 300);
+              .substring(0, 250);
     header = header.substring(3, header.length - 3);
     const arr = header.split("\n");
 
@@ -60,9 +58,10 @@ const getAllMarkdownFile = function(filePath){
     })
 
     const filename = path.basename(mdPath, ".md");
-
+    const filepath = path.basename(mdPath);
     return Object.assign(obj, {
       filename,
+      path: filepath,
       summary: `${content}...`
     })
   })
@@ -73,11 +72,4 @@ const getAllMarkdownFile = function(filePath){
 
 }
 
-module.exports = function(redskull, env){
-
-  const list = getAllMarkdownFile(ARTICLE_PATH);
-
-  return {
-    MY_ARTICLE_LIST: JSON.stringify(list)
-  }
-}
+module.exports = getAllMarkdownFile;

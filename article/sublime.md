@@ -5,6 +5,7 @@ title : sublime introduction
 subtitle: sublime introduction, installing and using
 ---
 
+
 *Submitted by Mike Hopper, WDI Atlanta.*
 
 The following lesson should take about `75 minutes` and includes a lab for
@@ -34,20 +35,18 @@ Students will be able to:
   - move the selected line up or down
 * Use keyboard shortcuts to save time
 
-![VI or Sublime](to-vi-or-not-to-vi.png)
-
 ## Install Brew
 
 
 Copy and Paste into your terminal window:
 
-```bash
+```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 ## Install Cask, Cask Versions and Sublime Text 3
 
-```bash
+```
 brew tap caskroom/cask
 brew tap caskroom/versions
 brew cask install sublime-text

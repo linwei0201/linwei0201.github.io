@@ -5,12 +5,11 @@
  */
 
 import { React, Page } from 'zola'
-import fetch from 'utils/fetch'
-import showdown from 'showdown'
 import styles from './index.styl'
+import articleList from 'data/article'
+import highlight from 'highlight.js'
 
-const converter = new showdown.Converter();
-
+const noop = () => {}
 export default class extends Page {
 
   constructor(props) {
@@ -24,33 +23,25 @@ export default class extends Page {
     }
   }
 
-  getArticleInfo(data){
-    let obj = {};
-        data = data.substring(3, data.length - 3);
-    const arr = data.split("\n");
-    arr.forEach(v => {
-      if(!!v.trim()){
-        const temp = v.split(":");
-        obj[temp[0].trim()] = temp[1].trim();
-      }
-    })
-    return obj;
-  }
-
-  componentDidMount() {
+  componentWillMount() {
     let {params} = this.props;
     let {path} = params;
 
-    fetch(`/article/${path}.md`, {text: true})
-      .then(data => {
-        const start = data.indexOf("---");
-        const end = data.indexOf("---", start+3) + 3;
-        const substring = data.substring(start, end);
-        const {author, createTime, title} = this.getArticleInfo(substring);
-
-        data = data.replace(substring, "")
-        this.setState({content: converter.makeHtml(data), author, createTime, title})
+    let article = articleList.find(v => v.filename == path);
+    article.component().then(content => {
+      this.setState({
+        content,
+        author: article.author,
+        createTime: article.createTime,
+        title: article.title,
+        tags: article.tags || []
       })
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    var blocks = Array.from(document.querySelectorAll('pre code'));
+    blocks.forEach(block => highlight.highlightBlock(block));
   }
 
   render () {
