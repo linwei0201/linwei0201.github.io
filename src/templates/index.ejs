@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= htmlWebpackPlugin.options.title || ''%></title>
   <% if (htmlWebpackPlugin.files.favicon) { %>
   <link href="<%= htmlWebpackPlugin.files.favicon%>" rel="apple-touch-icon-precomposed">
@@ -11,16 +12,12 @@
   <link href="<%= htmlWebpackPlugin.files.favicon%>" type="image/x-icon" rel="shortcut icon">
   <% } %>
 
-  <% if (htmlWebpackPlugin.options.mobile) { %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <% } %>
 
   <% for (var css in htmlWebpackPlugin.files.css) { %>
   <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>
 </head>
 <body>
-
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
       <div class="navbar-header">

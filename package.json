@@ -24,7 +24,6 @@
     "openBrowser": false,
     "devConfig": "./webpack/config.dev.js",
     "prodConfig": "./webpack/config.prod.js",
-    "favico": "",
-    "noHash": true
+    "favico": "./src/favicon.ico"
   }
 }

@@ -19,7 +19,8 @@ export default class extends Page {
       author: '匿名',
       createTime: '',
       title: '',
-      tags: []
+      tags: [],
+      pageTitle: ''
     }
   }
 
@@ -35,8 +36,14 @@ export default class extends Page {
         createTime: article.createTime,
         title: article.title,
         tags: article.tags || []
-      })
-    })
+      });
+    });
+    this.setState({pageTitle: document.title});
+    document.title = article.title;
+  }
+
+  componentWillUnmount() {
+    document.title = this.state.pageTitle;
   }
 
   componentDidUpdate(prevProps, prevState) {
