@@ -13,7 +13,8 @@ var path = require('path')
 var fs =   require('fs')
 var watch = require('watch')
 var getAllMarkdownFile = require('./getArticles');
-let curContent = "";
+var curContent = "",
+    isWatch = false;
 
 const ARTICLE_PATH = path.join(__dirname, '../../..', 'article');
 const WRITE_PATH = path.join(__dirname, '../../../src/data/article.js');
@@ -46,8 +47,8 @@ function writeFile(){
   fs.writeFile(WRITE_PATH, content);
 }
 
-function syncMDFilePlugin(){
-
+function syncMDFilePlugin(options){
+  isWatch = (options && options.watch) || false;
 }
 
 
@@ -55,9 +56,11 @@ Object.assign(syncMDFilePlugin.prototype, {
   apply: compiler => {
     compiler.plugin('compilation', function(compilation, callback) {
       writeFile();
-      watch.watchTree(ARTICLE_PATH, function (f, curr, prev) {
-        writeFile();
-      })
+      if(isWatch){
+        watch.watchTree(ARTICLE_PATH, function (f, curr, prev) {
+          writeFile();
+        });
+      }
     });
   }
 });

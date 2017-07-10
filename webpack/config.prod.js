@@ -30,7 +30,7 @@ module.exports = function (webpackConfig, redSkull, webpackPlugins) {
     loader: 'md-loader'
   });
 
-  webpackConfig.plugins.push(new syncMDFilePlugin())
+  webpackConfig.plugins.push(new syncMDFilePlugin({watch: false}))
 
   return webpackConfig
 }
