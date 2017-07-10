@@ -27,21 +27,56 @@ export default class extends Page {
       interests: [
         "瑜伽",
         "钢琴",
-        "coding",
-        "tvb",
-        "阿加莎",
-        "王者荣耀"
+        "旅行"
+      ],
+      skills: [
+        {
+          name: "构建",
+          value: ["webpack", "gulp", "npm"]
+        },
+        {
+          name: "框架/模板",
+          value: ["react", "react-router", "redux", "ejs"]
+        },
+        {
+          name: "库",
+          value: ["jQuery", "bootstrap", "lodash"]
+        },
+        {
+          name: "css",
+          value: ["less", "stylus", "css3"]
+        },
+        {
+          name: "其他",
+          value: ["html5", "es6", "git", "SQL"]
+        }
       ]
     }
   }
 
   render () {
-    let {links, interests} = this.state;
+    let {links, interests, skills} = this.state;
+    console.log(skills)
     return (
       <div className="profile-wrapper">
         <img className="avatar" src="https://avatars1.githubusercontent.com/u/12796371?v=3&s=460" />
-        <div></div>
-        <div className="title">兴趣爱好</div>
+        <div>Wei Lin</div>
+        <div className="title">技能</div>
+        {
+          skills.map((v, k) => {
+            return (
+              <div className="skills" key={k}>
+                <div className="skill-title">{v.name}</div>
+                <ul className="skill-list">
+                  {
+                    v.value.map((skill, skillKey) => <li key={skillKey}>{skill}</li>)
+                  }
+                </ul>
+              </div>
+            )
+          })
+        }
+        <div className="title">兴趣</div>
         <ul className="interests">
           {
             interests.map((v, k) => <li key={k}>{v}</li>)

@@ -1,5 +1,16 @@
+tag()
+  display inline-block
+  color #bfbfbf
+  padding 5px
+  border 1px solid #bfbfbf
+  border-radius 13px
+  font-weight normal
+  font-size 12px
+  &:not(:last-child)
+    margin-right 10px
+
 .profile-wrapper
-  width 1000px
+  width 500px
   margin 0 auto
   text-align center
   .avatar
@@ -31,18 +42,22 @@
           color #fff
   .title
     border-bottom 1px solid #eee
-    margin 25px auto 0
+    margin 25px auto 15px
     padding-bottom 5px
     width 450px
   .interests
     margin 10px 0
+    padding 0
     li
+      tag()
+  .skills
+    text-align left
+    padding-left 100px
+    .skill-title
       display inline-block
-      color #bfbfbf
-      padding 5px
-      border 1px solid #bfbfbf
-      border-radius 13px
-      font-weight normal
-      font-size 12px
-      &:not(:last-child)
-        margin-right 10px
+      width 80px
+    .skill-list
+      display inline-block
+      padding 0
+      li
+        tag()
