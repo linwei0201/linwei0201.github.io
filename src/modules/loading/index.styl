@@ -1,0 +1,54 @@
+.loading-wrapper
+  text-align center
+  padding 15px 0
+  width 100px
+  margin 0 auto
+  .loading-inner
+    position relative
+    width 100px
+    height 100px
+    span
+      position absolute
+      display inline-block
+      width 16px
+      height 16px
+      background #00ae66
+      border-radius 50%
+      -webkit-animation load 1.04s ease infinite
+      &:first-child
+        top calc(50% - 8px)
+        left 0
+        -webkit-animation-delay 0.13s
+      &:nth-child(2)
+        top 14px
+        left 14px
+        -webkit-animation-delay 0.26s
+      &:nth-child(3)
+        left calc(50% - 8px)
+        top 0
+        -webkit-animation-delay 0.39s
+      &:nth-child(4)
+        top 14px
+        right 14px
+        -webkit-animation-delay 0.52s
+      &:nth-child(5)
+        right 0
+        top calc(50% - 8px)
+        -webkit-animation-delay 0.65s
+      &:nth-child(6)
+        right 14px
+        bottom 14px
+        -webkit-animation-delay 0.78s
+      &:nth-child(7)
+        bottom 0
+        left calc(50% - 8px)
+        -webkit-animation-delay 0.91s
+      &:last-child
+        bottom 14px
+        left 14px
+        -webkit-animation-delay 1.04s
+@-webkit-keyframes load
+  0%
+    opacity 1
+  100%
+    opacity 0.2

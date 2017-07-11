@@ -8,6 +8,7 @@ import { React, Page } from 'zola'
 import styles from './index.styl'
 import articleList from 'data/article'
 import highlight from 'highlight.js'
+import Loading from 'modules/loading'
 
 const noop = () => {}
 export default class extends Page {
@@ -69,7 +70,7 @@ export default class extends Page {
           </div>
           <div dangerouslySetInnerHTML={{__html: content}}></div>
         </div>
-      : <div>Loading...</div>
+      : <Loading />
     )
   }
 }
