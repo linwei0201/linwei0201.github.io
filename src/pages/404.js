@@ -4,9 +4,9 @@
  *  created at: Tue Jun 27 2017 18:29:16 GMT+0800 (CST)
  */
 
-import { React, Page } from 'zola'
+import React, {Component} from 'react'
 
-export default class Index extends Page {
+export default class Index extends Component {
   render () {
     return (
       <div>

@@ -1,10 +1,21 @@
 import './styles/common.styl'
-
-import zola from 'zola'
+import {Router, Route, hashHistory} from 'react-router'
 import routes from './routes'
-// import getBasePath from 'utils/getBasePath'
+import {render} from 'react-dom'
+import React from 'react'
 
-// __webpack_public_path__ = getBasePath()
-zola
-  .set('env', process.env.NODE_ENV)
-  .render(routes, '#root')
+const routers = routes.map((route, k) => {
+  return  <Route
+            key={k}
+            path={route.path}
+            getComponent={(nextState, cb) => {
+              route.component()
+                .then(mod => cb(null, mod.default))
+            }}
+          />
+})
+
+render(
+  <Router history={hashHistory}>
+    { routers }
+  </Router>, document.getElementById('root'))

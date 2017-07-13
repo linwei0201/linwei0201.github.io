@@ -1,4 +1,4 @@
-import { React } from 'zola'
+import React from 'react'
 import styles from './index.styl'
 
 export default class Loading extends React.Component{

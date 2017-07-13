@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-  <div id="<%= htmlWebpackPlugin.options.appMountId || 'app'%>"></div>
+  <div id="root"></div>
   <% if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0) { %>
     <% for (var index in htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= htmlWebpackPlugin.options.appMountIds[index]%>"></div>
