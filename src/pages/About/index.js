@@ -56,11 +56,11 @@ export default class extends Component {
 
   render () {
     let {links, interests, skills} = this.state;
-    console.log(skills)
+
     return (
       <div className="profile-wrapper">
         <img className="avatar" src="https://avatars1.githubusercontent.com/u/12796371?v=3&s=460" />
-        <div>Wei Lin</div>
+        <div className="user-name">Wei Lin</div>
         <div className="title">技能</div>
         {
           skills.map((v, k) => {

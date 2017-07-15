@@ -55,22 +55,26 @@ export default class extends Component {
   render () {
     let {content, author, createTime, title, tags} = this.state;
     return (
-      !!content
-      ? <div className="article-wrapper">
-          <div className="article-header">
-            <h1>{title}</h1>
-            <div className="author">
-              <span>{author},   {createTime}</span>
+      <div className="article-wrapper">
+        {
+          !!content
+          ? <div>
+              <div className="article-header">
+                <h1>{title}</h1>
+                <div className="author">
+                  <span>{author},   {createTime}</span>
+                </div>
+                <div className="article-tags">
+                  {
+                    tags.map(v => <span>{v}</span>)
+                  }
+                </div>
+              </div>
+              <div dangerouslySetInnerHTML={{__html: content}}></div>
             </div>
-            <div className="article-tags">
-              {
-                tags.map(v => <span>{v}</span>)
-              }
-            </div>
-          </div>
-          <div dangerouslySetInnerHTML={{__html: content}}></div>
-        </div>
-      : <Loading />
+          : <Loading />
+        }
+      </div>
     )
   }
 }
