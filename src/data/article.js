@@ -1,5 +1,15 @@
 export default [
 	{
+		createTime: "2017/07/16",
+		author: "Wei Lin",
+		title: "DOM总结",
+		subtitle: "总结DOM常用方法及事件模型",
+		filename: "dom",
+		path: "dom.md",
+		summary: "DOM总结: BOM: BOM浏览器对象模型（Browser Object Model）BOM对象是在Web中使用JavaScript的核心，该对象提供了与浏览器交互相关对象结构。BOM由多个子对象组成，其核心为window对象，它是BOM的顶层对象，表示在浏览器环境中的一个全局的顶级对象，所有在浏览器环境中使用的对象都是window对象的子对象。 \"早期是没有BOM标准的，浏览器实现各不相同，直到h5规范中，W3C才把部分BOM的接口比如location和history纳入h5规范中\" 1. ...",
+		component: () => System.import('article/dom.md')
+	},
+	{
 		createTime: "2017/06/28",
 		author: "linwei0201",
 		title: "git配置及命令介绍",
@@ -18,15 +28,5 @@ export default [
 		path: "mac.md",
 		summary: "\"⌘（command）、⌥（option）、⇧（shift）、⇪（caps lock）、⌃（control）、↩（return）、⌅（enter）\" Command+M:最小化窗口 Command+T: 在浏览器中打开新的选项卡 Command+W: 关闭窗口 Command+Q: 退出程序 Command+Option+I 快捷键打开开发人员工具 Command+Option+J 直接进入 JavaScript 控制台 command+R： 刷新页面 Command+~ 用于同一个应用程序的多...",
 		component: () => System.import('article/mac.md')
-	},
-	{
-		createTime: "2017/06/28",
-		author: "linwei0201",
-		title: "sublime introduction",
-		subtitle: "sublime introduction, installing and using",
-		filename: "sublime",
-		path: "sublime.md",
-		summary: "Submitted by Mike Hopper, WDI Atlanta. The following lesson should take about 75 minutes and includes a lab for\nthe students to practice some of the powerful editing features of Sublime. The main purpose of this lesson is to get students comfortable ...",
-		component: () => System.import('article/sublime.md')
 	}
 ]
