@@ -18,7 +18,7 @@ export default class Index extends Component {
       <div className="intro-header">
         <div className="container">
           <div className="intro-message">
-            <h1>Hello, World</h1>
+            <h1>Big Big World</h1>
             <h3>miss vivians blog</h3>
             <hr className="intro-divider" />
             <ul className="list-inline intro-social-buttons">
