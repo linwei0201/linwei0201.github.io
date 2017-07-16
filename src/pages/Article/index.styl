@@ -1,18 +1,43 @@
 .article-wrapper
-  width 1000px
+  width 100%
   margin 0 auto
   box-sizing border-box
-  padding 30px 80px 80px
+  padding-bottom 80px
   margin-bottom 30px
   .article-header
     margin-bottom 30px
-    .author
-      margin-top 10px
-      font-size 14px
-      color #999
-      line-height 24px
-      font-weight normal
+    padding 30px 0
+    background #B993D6  /* fallback for old browsers */
+    background -webkit-linear-gradient(to right, #8CA6DB, #B993D6)  /* Chrome 10-25, Safari 5.1-6 */
+    background linear-gradient(to right, #8CA6DB, #B993D6) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color #fff
+    .header-wrap
+      width 1000px
+      margin 0 auto
+      .author
+        margin-top 10px
+        font-size 14px
+        color #999
+        line-height 24px
+        font-weight normal
+        color #fff
+      .author, .pub-time
+        span
+          vertical-align middle
+        i
+          margin-right 5px
+          vertical-align middle
+  .article-content
+    width 1000px
+    margin 0 auto
 @media (max-width: 767px )
   .article-wrapper
-    width 100%
-    padding 20px
+    padding-bottom 20px
+    .article-header
+      padding 20px
+      .header-wrap
+        width 100%
+    .article-content
+      width 100%
+      padding 0 20px
+      box-sizing border-box

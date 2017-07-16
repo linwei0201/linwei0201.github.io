@@ -60,17 +60,22 @@ export default class extends Component {
           !!content
           ? <div>
               <div className="article-header">
-                <h1>{title}</h1>
-                <div className="author">
-                  <span>{author},   {createTime}</span>
-                </div>
-                <div className="article-tags">
-                  {
-                    tags.map(v => <span>{v}</span>)
-                  }
+                <div className="header-wrap">
+                  <h1>{title}</h1>
+                  <div className="pub-time">
+                    <i className="icon-calendar"></i><span>{createTime}</span>
+                  </div>
+                  <div className="author">
+                    <i className="icon-user"></i><span>{author}</span>
+                  </div>
+                  <div className="article-tags">
+                    {
+                      tags.map(v => <span>{v}</span>)
+                    }
+                  </div>
                 </div>
               </div>
-              <div dangerouslySetInnerHTML={{__html: content}}></div>
+              <div className="article-content" dangerouslySetInnerHTML={{__html: content}}></div>
             </div>
           : <Loading />
         }
