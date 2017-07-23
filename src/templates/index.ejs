@@ -18,22 +18,6 @@
   <% } %>
 </head>
 <body>
-  <nav class="topnav clear" role="navigation">
-    <div class="topnav-left">
-      <a class="nav-link" href="#">Home</a>
-    </div>
-    <ul class="topnav-right">
-      <li>
-        <a href="#/aboutme">About</a>
-      </li>
-      <li>
-        <a href="#/blogs">Blogs</a>
-      </li>
-     <!--  <li>
-        <a href="">Contact</a>
-      </li> -->
-    </ul>
-  </nav>
 
   <div id="root"></div>
   <% if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0) { %>
@@ -41,25 +25,6 @@
     <div id="<%= htmlWebpackPlugin.options.appMountIds[index]%>"></div>
     <% } %>
   <% } %>
-  <footer>
-    <div class="container">
-      <ul class="list-inline">
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li class="footer-menu-divider">&sdot;</li>
-        <li>
-          <a href="#/aboutme">About</a>
-        </li>
-        <li class="footer-menu-divider">&sdot;</li>
-        <li>
-          <a href="#/blogs">Blogs</a>
-        </li>
-        <li class="footer-menu-divider">&sdot;</li>
-      </ul>
-      <p class="copyright text-muted small">Copyright &copy; linwei0201@126.com 2017. All Rights Reserved</p>
-    </div>
-  </footer>
 
   <% if (htmlWebpackPlugin.options.window) { %>
   <script>

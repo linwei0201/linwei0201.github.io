@@ -1,21 +1,41 @@
-import './styles/common.styl'
-import {Router, Route, hashHistory} from 'react-router'
-import routes from './routes'
-import {render} from 'react-dom'
 import React from 'react'
-
-const routers = routes.map((route, k) => {
-  return  <Route
-            key={k}
-            path={route.path}
-            getComponent={(nextState, cb) => {
-              route.component()
-                .then(mod => cb(null, mod.default))
-            }}
-          />
-})
+import {render} from 'react-dom'
+import RouterComponent from './routes'
+import './styles/common.styl'
 
 render(
-  <Router history={hashHistory}>
-    { routers }
-  </Router>, document.getElementById('root'))
+  <div>
+    <nav className="topnav clear" role="navigation">
+      <div className="topnav-left">
+        <a className="nav-link" href="#">Home</a>
+      </div>
+      <ul className="topnav-right">
+        <li>
+          <a href="#/aboutme">About</a>
+        </li>
+        <li>
+          <a href="#/blogs">Blogs</a>
+        </li>
+      </ul>
+    </nav>
+    <RouterComponent />
+    <footer>
+      <div className="container">
+        <ul className="list-inline">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li className="footer-menu-divider">&sdot;</li>
+          <li>
+            <a href="#/aboutme">About</a>
+          </li>
+          <li className="footer-menu-divider">&sdot;</li>
+          <li>
+            <a href="#/blogs">Blogs</a>
+          </li>
+          <li className="footer-menu-divider">&sdot;</li>
+        </ul>
+        <p className="copyright text-muted small">Copyright &copy; linwei0201@126.com 2017. All Rights Reserved</p>
+      </div>
+    </footer>
+  </div>, document.getElementById('root'))

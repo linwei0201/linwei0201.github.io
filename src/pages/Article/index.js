@@ -26,7 +26,7 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    let {params} = this.props;
+    let {params} = this.props.match;
     let {path} = params;
 
     let article = articleList.find(v => v.filename == path);
