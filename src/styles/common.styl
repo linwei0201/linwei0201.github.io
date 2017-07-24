@@ -1,6 +1,7 @@
 @import "normalize.css"
 @import "./BootstrapStyles/font-awesome.min.css"
 @import "~highlight.js/styles/tomorrow-night.css"
+@import "./md.styl"
 
 
 html, body
@@ -12,10 +13,11 @@ h1, h2, h3, h4, h5, h6, nav, footer
   font-weight 700
   line-height 1.1
 
-ul, li
-  margin 0
-  padding 0
-  list-style none
+nav, footer, .intro-header, .profile-wrapper
+  ul, li
+    margin 0
+    padding 0
+    list-style none
 
 #root
   min-height calc(100% - 163px)
