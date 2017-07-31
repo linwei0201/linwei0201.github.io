@@ -11,7 +11,7 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist'),
-    publicPath: "https://linwei0201.github.io/dist/"
+    publicPath: "http://127.0.0.1:8080/dist/"
   },
   module: webpackModule,
   resolve,

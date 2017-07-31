@@ -4,8 +4,8 @@
   "description": "a react blog system",
   "scripts": {
     "start": "ENVIRONMENT=development node webpack/server.js",
-    "build": "ENVIRONMENT=production webpack --progress --colors --config ./webpack/config.prod.js",
-    "local": "ENVIRONMENT=production redskull build --publicPath http://127.0.0.1:8080/dist/ && cp -rf ./dist/index.html ./index.html"
+    "build": "ENVIRONMENT=production webpack --progress --colors --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
+    "local": "ENVIRONMENT=production webpack --progress --colors --config ./webpack/config.local.js && cp -rf ./dist/index.html ./index.html"
   },
   "license": "ISC",
   "dependencies": {
