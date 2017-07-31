@@ -1,16 +1,27 @@
 {
   "name": "Big-Big-World",
   "version": "0.0.1",
-  "description": "a react application powerd by zola",
+  "description": "a react blog system",
   "scripts": {
-    "start": "ENVIRONMENT=development redskull start --dashboard false",
-    "test": "ENVIRONMENT=testing redskull build",
-    "build": "ENVIRONMENT=production redskull build --publicPath https://linwei0201.github.io/dist/ && cp -rf ./dist/index.html ./index.html",
-    "build2": "ENVIRONMENT=production redskull build --publicPath http://missweiweian.com/dist/ && cp -rf ./dist/index.html ./index.html",
+    "start": "ENVIRONMENT=development node webpack/server.js",
+    "build": "ENVIRONMENT=production webpack --progress --colors --config ./webpack/config.prod.js",
     "local": "ENVIRONMENT=production redskull build --publicPath http://127.0.0.1:8080/dist/ && cp -rf ./dist/index.html ./index.html"
   },
   "license": "ISC",
   "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.29.0",
+    "json-loader": "^0.5.7",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "highlight.js": "^9.12.0",
     "html-loader": "^0.4.5",
     "react": "^15.4.0",
@@ -18,16 +29,14 @@
     "react-router-dom": "^4.1.1",
     "showdown": "^1.7.1",
     "summarize-markdown": "^0.3.1",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "style-loader": "^0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.3.0"
   },
-  "redskull": {
-    "port": 6003,
-    "src": "./src",
-    "entry": "index.js",
-    "dist": "./dist",
-    "openBrowser": false,
-    "devConfig": "./webpack/config.dev.js",
-    "prodConfig": "./webpack/config.prod.js",
-    "favico": "./src/favicon.ico"
+  "devDependencies": {
+    "webpack-dev-server": "^2.6.1"
   }
 }

@@ -1,36 +1,36 @@
-var path = require('path')
-var fs =   require('fs')
-var common = require('./config.common')
-var syncMDFilePlugin = require('./plugins/syncFile/syncMDFilesPlugin')
+const path = require('path'),
+      webpack = require('webpack'),
+      HtmlWebpackPlugin = require('html-webpack-plugin'),
+      { resolve,  webpackModule, resolveLoader } = require('./config.common'),
+      syncMDFilePlugin = require('./plugins/syncFile/syncMDFilesPlugin')
 
-module.exports = function (webpackConfig, redSkull, webpackPlugins) {
+const config = {
+  entry: [
+    './src/index.js'
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: "http://127.0.0.1:8080"
+  },
+  module: webpackModule,
+  resolve,
+  resolveLoader,
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "线上",
+      hash: false,
+      inject: false,
+      window: {
+        'ENV': 'dev'
+      },
+      // envFile: null,
+      filename: 'index.html',
+      favicon: '',
+      template: 'src/templates/index.ejs'
+    }),
+    new syncMDFilePlugin()
+  ]
+};
 
-  webpackConfig = common(webpackConfig, redSkull, webpackPlugins)
-
-  //为src下的所有目录，添加alias
-  const src = redSkull.src
-  const dirs = fs.readdirSync(src)
-  dirs.forEach(function(dirname){
-    webpackConfig.resolve.alias[dirname] = path.join(src,dirname)
-  });
-
-  //为article目录设置alias
-  webpackConfig.resolve.alias["article"] = path.join(src, "../article")
-
-
-  webpackConfig.resolveLoader.modules.push(path.join(src,'../webpack/loaders'))
-
-  //添加loader，按添加顺序逆序执行
-  webpackConfig.module.loaders.push({
-    test: /\.md$/,
-    loader: 'html-loader'
-  });
-  webpackConfig.module.loaders.push({
-    test: /\.md$/,
-    loader: 'md-loader'
-  });
-
-  webpackConfig.plugins.push(new syncMDFilePlugin({watch: false}))
-
-  return webpackConfig
-}
+module.exports = config;
