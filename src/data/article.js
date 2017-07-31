@@ -28,5 +28,15 @@ export default [
 		path: "mac.md",
 		summary: "\"⌘（command）、⌥（option）、⇧（shift）、⇪（caps lock）、⌃（control）、↩（return）、⌅（enter）\" Command+M:最小化窗口 Command+T: 在浏览器中打开新的选项卡 Command+W: 关闭窗口 Command+Q: 退出程序 Command+Option+I 快捷键打开开发人员工具 Command+Option+J 直接进入 JavaScript 控制台 command+R： 刷新页面 Command+~ 用于同一个应用程序的多...",
 		component: () => System.import('article/mac.md')
+	},
+	{
+		createTime: "2017/07/31",
+		author: "Wei Lin",
+		title: "Webpack常用配置及实践",
+		subtitle: "了解典型常用的webpack配置",
+		filename: "webpack",
+		path: "webpack.md",
+		summary: "1. es2015模块支持: ES6的import和export，webpack是支持的，但是其他ES6的功能，需要安装babel解析器来解析。\nSystem.import 2. 配置文件: webpack会默认使用名为webpack.config.js的配置文件，也可以在命令行中通过--config来传递参数，表名配置文件的文件名。一般我们为了区分环境，会拆分成3类配置文件 开发环境config.dev.js，一般配合webpack-dev-server使用.测试环境config.test.j...",
+		component: () => System.import('article/webpack.md')
 	}
 ]
