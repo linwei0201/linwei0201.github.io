@@ -1,8 +1,5 @@
 const path = require('path'),
-      webpack = require('webpack'),
-      HtmlWebpackPlugin = require('html-webpack-plugin'),
-      { resolve,  webpackModule, resolveLoader } = require('./config.common'),
-      syncMDFilePlugin = require('./plugins/syncFile/syncMDFilesPlugin')
+      { resolve,  getModules, resolveLoader, getPlugins } = require('./config.common');
 
 const config = {
   entry: [
@@ -14,25 +11,10 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve('./dist')
   },
-  module: webpackModule,
+  module: getModules("dev"),
   resolve,
   resolveLoader,
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(), // 启用 HMR
-    new HtmlWebpackPlugin({
-      title: "开发环境",
-      hash: false,
-      inject: false,
-      window: {
-        'ENV': 'dev'
-      },
-      // envFile: null,
-      filename: 'index.html',
-      favicon: '',
-      template: 'src/templates/index.ejs'
-    }),
-    new syncMDFilePlugin({watch: true})
-  ]
+  plugins: getPlugins("dev")
 };
 
 module.exports = config;
