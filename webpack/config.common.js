@@ -128,12 +128,20 @@ module.exports = {
     }else{
       plugins.push(
         new ExtractTextPlugin('css/style.css'),
+        new webpack.DefinePlugin({
+          'process.env':{
+            'NODE_ENV': JSON.stringify('production')
+          }
+        }),
         new webpack.optimize.UglifyJsPlugin({
-          sourceMap: true
+          sourceMap: true,
+          exclude: ["node_modules"]
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+          name: 'common' // Specify the common bundle's name.
         })
       );
     }
-
     return plugins;
   }
 }

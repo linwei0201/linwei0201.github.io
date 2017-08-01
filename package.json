@@ -39,6 +39,7 @@
     "webpack": "^3.3.0"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
     "webpack-dev-server": "^2.6.1"
   }
 }
