@@ -126,7 +126,12 @@ module.exports = {
     if(isDev){
       plugins.push(new webpack.HotModuleReplacementPlugin());
     }else{
-      plugins.push(new ExtractTextPlugin('css/style.css'));
+      plugins.push(
+        new ExtractTextPlugin('css/style.css'),
+        new webpack.optimize.UglifyJsPlugin({
+          sourceMap: true
+        })
+      );
     }
 
     return plugins;
