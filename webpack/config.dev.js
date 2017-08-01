@@ -1,5 +1,6 @@
 const path = require('path'),
-      { resolve,  getModules, resolveLoader, getPlugins } = require('./config.common');
+      { resolve,  getModules, resolveLoader, getPlugins } = require('./config.common'),
+      env = process.env.ENVIRONMENT;
 
 const config = {
   entry: [
@@ -11,10 +12,10 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve('./dist')
   },
-  module: getModules("dev"),
+  module: getModules(env),
   resolve,
   resolveLoader,
-  plugins: getPlugins("dev")
+  plugins: getPlugins(env)
 };
 
 module.exports = config;
