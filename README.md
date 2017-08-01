@@ -9,12 +9,13 @@
 - ejs template
 - public Path设置
 - 文件hash
-- js，css压缩
+- js，css压缩，commonChunck提取
 
 **Coming Soon, 敬请期待~~**
 - CleanWebpackPlugin  //编译前删除dist目录，现有的不支持自定义目录结构
 - DLL & happypack     //加快编译速度
 - ProvidePlugin       //全局变量，如jQuery, lodash
+- source-map
 
 **目录结构**
 
