@@ -127,7 +127,7 @@ module.exports = {
       plugins.push(new webpack.HotModuleReplacementPlugin());
     }else{
       plugins.push(
-        new ExtractTextPlugin('css/style.css'),
+        new ExtractTextPlugin('css/[name]_[chunkhash:5].css'),
         new webpack.DefinePlugin({
           'process.env':{
             'NODE_ENV': JSON.stringify('production')

@@ -18,7 +18,7 @@ const getPublic = () => {
 const config = {
   entry: './src/index.js',
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name]_[chunkhash:5].js',
     path: path.resolve(__dirname, '../dist/'),
     publicPath: getPublic()
   },
