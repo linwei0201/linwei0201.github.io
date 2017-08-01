@@ -1,6 +1,8 @@
 var config = require("./config.dev.js"),
     path = require("path"),
+    fs = require('fs'),
     webpack = require('webpack'),
+    express = require('express'),
     WebpackDevServer = require('webpack-dev-server'),
     ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
@@ -16,7 +18,7 @@ const _percent = {}
 var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
 
-  // contentBase: path.join(__dirname, '../dist'),
+  // contentBase: path.resolve(__dirname, "../dist"),
   // Can also be an array, or: contentBase: "http://localhost/",
 
   hot: true,
@@ -36,16 +38,31 @@ var server = new WebpackDevServer(compiler, {
   // Use "**" to proxy all paths to the specified server.
   // This is useful if you want to get rid of 'http://localhost:8080/' in script[src],
   // and has many other use cases (see https://github.com/webpack/webpack-dev-server/pull/127 ).
-  proxy: {
-    "**": "http://localhost:8888/dist"
-  },
+  // proxy: {
+  //   "/api": "http://localhost:8888/dist/",
+  // },
 
   setup: function(app) {
-    // Here you can access the Express app object and add your own custom middleware to it.
-    // For example, to define custom handlers for some paths:
-    // app.get('/some/path', function(req, res) {
-    //   res.json({ custom: 'response' });
-    // });
+    app.use('/api/:filename', function(req, res){
+
+      let { filename } = req.params,
+          content = "",
+          filePath = path.resolve(__dirname, `../src/mock/${filename}`);
+      if(!filename.endsWith(".json")){
+        filePath = `${filePath}.json`;
+      }
+      if(fs.existsSync(filePath)){
+        content = fs.readFileSync(filePath);
+        console.log("mock api: ", req.originalUrl, "[success]");
+      }else{
+        content = "API 404";
+        console.log("mock api: ", req.originalUrl, "[404]");
+      }
+
+      res.set('Content-Type',"text/html;charset=UTF-8");
+      res.write(content);
+      res.end();
+    })
   },
 
   // pass [static options](http://expressjs.com/en/4x/api.html#express.static) to inner express server
@@ -62,7 +79,7 @@ var server = new WebpackDevServer(compiler, {
     poll: 1000
   },
   // It's a required option.
-  publicPath: "http://127.0.0.1:8888/dist/",
+  // publicPath: "http://127.0.0.1:8888/dist/",
   headers: { "X-Custom-Header": "yes" },
   stats: { colors: true },
   inline: true,

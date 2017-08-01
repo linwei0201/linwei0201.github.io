@@ -15,6 +15,7 @@ linwei0201.github.io
     |-- font
   |-- src
     |-- data        //【不要修改】文章信息列表，由插件自动生成
+    |-- mock        //mock接口，通过/api/aaa.json 或 /api/aaa 访问
     |-- modules     //公用组件
     |-- pages       //页面
     |-- styles      //公用样式
