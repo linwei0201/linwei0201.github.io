@@ -4,6 +4,7 @@
 
 **目录结构**
 
+```js
 linwei0201.github.io
   |- article    //文章列表
     |- aaa.md
@@ -31,6 +32,6 @@ linwei0201.github.io
   |- .nojekyll            //不使用jekyll编译github代码
   |- index.html           //【不要修改】自动生成的，编译后拷贝到根目录
   |- package.json         //npm依赖及脚本定义
-
+```
 
 [去看看呗](http://missweiweian.com)
