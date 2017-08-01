@@ -14,7 +14,6 @@ export default class Index extends Component {
           <h1>404</h1> <h2>Not Found</h2>
           <p>The page you were trying to reach doesn't exist.</p>
         </div>
-        <div className="footer">with <b>♥</b> by lianjia-fe</div>
       </div>
     )
   }
