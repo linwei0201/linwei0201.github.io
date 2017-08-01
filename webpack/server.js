@@ -1,10 +1,18 @@
 var config = require("./config.dev.js"),
     path = require("path"),
     webpack = require('webpack'),
-    WebpackDevServer = require('webpack-dev-server');
+    WebpackDevServer = require('webpack-dev-server'),
+    ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 
 var compiler = webpack(config);
+const _percent = {}
+  compiler.apply(new ProgressPlugin((percentage, msg)=> {
+    percentage = Math.floor(percentage * 100)
+    if (percentage % 50 == 0) {
+      console.log(`${msg} ==> ${percentage}%`);
+    }
+  }))
 var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
 
@@ -46,7 +54,7 @@ var server = new WebpackDevServer(compiler, {
 
   // webpack-dev-middleware options
   quiet: false,
-  noInfo: false,
+  noInfo: true,
   // lazy: true,
   // filename: "bundle.js",
   watchOptions: {
@@ -57,7 +65,8 @@ var server = new WebpackDevServer(compiler, {
   publicPath: "http://127.0.0.1:8888/dist/",
   headers: { "X-Custom-Header": "yes" },
   stats: { colors: true },
-  inline: true
+  inline: true,
+  clientLogLevel: "none"
 });
 server.listen(8888, 'localhost', function(){
   console.log("dev server started at http://127.0.0.1:8888");
