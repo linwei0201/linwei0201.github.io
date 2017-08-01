@@ -1,6 +1,23 @@
-# Miss vivians blog
-
 基于webpack react搭建的博客系统
+
+## 本地运行步骤
+
+```
+1. git clone 
+2. npm i
+3. npm start 
+4. 浏览器打开127.0.0.1:8888
+```
+
+## 本地编译步骤
+
+```
+1. git clone 
+2. npm i
+3. npm run local 
+4. 根目录下启动一个http-server（可以从npm安装）
+5. 浏览器打开127.0.0.1:8080
+```
 
 **功能支持**
 - mock
