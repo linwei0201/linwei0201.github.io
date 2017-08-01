@@ -19,7 +19,7 @@
 5. 浏览器打开127.0.0.1:8080
 ```
 
-**功能支持**
+## 功能支持
 - mock
 - hot module reload
 - stylus, less
@@ -28,13 +28,14 @@
 - 文件hash
 - js，css压缩，commonChunck提取
 
-**Coming Soon, 敬请期待~~**
+
+## Coming Soon, 敬请期待~~
 - CleanWebpackPlugin  //编译前删除dist目录，现有的不支持自定义目录结构
 - DLL & happypack     //加快编译速度
 - ProvidePlugin       //全局变量，如jQuery, lodash
 - source-map
 
-**目录结构**
+## 目录结构
 
 ```
 linwei0201.github.io
