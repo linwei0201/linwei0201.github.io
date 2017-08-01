@@ -4,7 +4,7 @@
 
 **目录结构**
 
-```js
+```
 linwei0201.github.io
   |-- article    //文章列表
     |-- aaa.md
