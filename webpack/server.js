@@ -8,13 +8,16 @@ var config = require("./config.dev.js"),
 
 
 var compiler = webpack(config);
-const _percent = {}
-  compiler.apply(new ProgressPlugin((percentage, msg)=> {
-    percentage = Math.floor(percentage * 100)
-    if (percentage % 50 == 0) {
-      console.log(`${msg} ==> ${percentage}%`);
-    }
-  }))
+compiler.apply(new ProgressPlugin((percentage, msg)=> {
+  const stream = process.stderr
+  const str = `${Math.floor(percentage * 100)}% ${msg}`
+  stream.cursorTo(0);
+  stream.write(str);
+  stream.clearLine(1);
+  if(percentage == 1){
+    stream.write('\n')
+  }
+}))
 var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
 

@@ -4,9 +4,9 @@
   "description": "a react blog system",
   "scripts": {
     "start": "ENVIRONMENT=dev node webpack/server.js",
-    "build": "ENVIRONMENT=prod webpack --progress --colors --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
-    "weiweian": "ENVIRONMENT=weiweian webpack --progress --colors --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
-    "local": "ENVIRONMENT=local webpack --progress --colors --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html"
+    "build": "ENVIRONMENT=prod webpack --progress --colors --display errors-only --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
+    "weiweian": "ENVIRONMENT=weiweian webpack --progress --colors --display errors-only --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
+    "local": "ENVIRONMENT=local webpack --progress --colors --display errors-only --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html"
   },
   "license": "ISC",
   "dependencies": {
