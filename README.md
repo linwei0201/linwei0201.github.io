@@ -1,8 +1,6 @@
-# Miss vivians blog
+基于webpack react搭建的博客系统，[线上地址](http://missweiweian.com)
 
-基于webpack react搭建的博客系统
-
-**功能支持**
+## 功能支持
 - mock
 - hot module reload
 - stylus, less
@@ -11,13 +9,14 @@
 - 文件hash
 - js，css压缩，commonChunck提取
 
-**Coming Soon, 敬请期待~~**
+
+## Coming Soon, 敬请期待~~
 - CleanWebpackPlugin  //编译前删除dist目录，现有的不支持自定义目录结构
 - DLL & happypack     //加快编译速度
 - ProvidePlugin       //全局变量，如jQuery, lodash
 - source-map
 
-**目录结构**
+## 目录结构
 
 ```
 linwei0201.github.io
@@ -50,4 +49,25 @@ linwei0201.github.io
   |-- package.json         //npm依赖及脚本定义
 ```
 
-[去看看呗](http://missweiweian.com)
+## 本地运行步骤
+
+```
+1. git clone https://github.com/linwei0201/linwei0201.github.io.git
+2. npm i
+3. npm start 
+4. 浏览器打开127.0.0.1:8888
+```
+
+## 本地编译步骤
+
+```
+1. git clone https://github.com/linwei0201/linwei0201.github.io.git
+2. npm i
+3. npm run local 
+4. 根目录下启动一个http-server（可以从npm安装）
+5. 浏览器打开127.0.0.1:8080
+```
+
+
+
+
