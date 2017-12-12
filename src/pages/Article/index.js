@@ -5,16 +5,14 @@
  */
 
 import React, {Component} from 'react'
-import styles from './index.styl'
+import './index.styl'
 import articleList from 'data/article'
 import highlight from 'highlight.js'
 import Loading from 'modules/loading'
 
-const noop = () => {}
 export default class extends Component {
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       content: '',
       author: '匿名',
@@ -26,10 +24,10 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    let {params} = this.props.match;
-    let {path} = params;
+    const {params} = this.props.match
+    const {path} = params
 
-    let article = articleList.find(v => v.filename == path);
+    const article = articleList.find(v => v.filename === path)
     article.component().then(content => {
       this.setState({
         content,
@@ -37,36 +35,42 @@ export default class extends Component {
         createTime: article.createTime,
         title: article.title,
         tags: article.tags || []
-      });
-    });
-    this.setState({pageTitle: document.title});
-    document.title = article.title;
+      })
+    })
+    this.setState({pageTitle: document.title})
+    document.title = article.title
+  }
+
+  componentDidUpdate() {
+    const blocks = Array.from(document.querySelectorAll('pre code'))
+    blocks.forEach(block => highlight.highlightBlock(block))
   }
 
   componentWillUnmount() {
-    document.title = this.state.pageTitle;
+    document.title = this.state.pageTitle
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    var blocks = Array.from(document.querySelectorAll('pre code'));
-    blocks.forEach(block => highlight.highlightBlock(block));
-  }
-
-  render () {
-    let {content, author, createTime, title, tags} = this.state;
+  render() {
+    const {
+      content,
+      author,
+      createTime,
+      title,
+      tags
+    } = this.state
     return (
       <div className="article-wrapper">
         {
-          !!content
-          ? <div>
+          content
+            ? <div>
               <div className="article-header">
                 <div className="header-wrap">
                   <h1>{title}</h1>
                   <div className="pub-time">
-                    <i className="icon-calendar"></i><span>{createTime}</span>
+                    <i className="icon-calendar" /><span>{createTime}</span>
                   </div>
                   <div className="author">
-                    <i className="icon-user"></i><span>{author}</span>
+                    <i className="icon-user" /><span>{author}</span>
                   </div>
                   <div className="article-tags">
                     {
@@ -75,9 +79,9 @@ export default class extends Component {
                   </div>
                 </div>
               </div>
-              <div className="article-content" dangerouslySetInnerHTML={{__html: content}}></div>
+              <div className="article-content" dangerouslySetInnerHTML={{__html: content}} />
             </div>
-          : <Loading />
+            : <Loading />
         }
       </div>
     )

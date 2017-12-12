@@ -43,7 +43,7 @@ function writeFile(){
     return false;
   }
   curContent = content;
-
+  console.log("pppp==",WRITE_PATH)
   fs.writeFile(WRITE_PATH, content);
 }
 

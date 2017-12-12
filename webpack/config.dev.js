@@ -1,6 +1,7 @@
 const path = require('path'),
       { resolve,  getModules, resolveLoader, getPlugins } = require('./config.common'),
-      env = process.env.ENVIRONMENT;
+      env = process.env.ENVIRONMENT,
+      webpack = require('webpack');
 
 const config = {
   entry: [
@@ -15,7 +16,12 @@ const config = {
   module: getModules(env),
   resolve,
   resolveLoader,
-  plugins: getPlugins(env)
+  plugins: getPlugins(env).push(
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../vendor/vendors-manifest.json')
+    })
+  )
 };
 
 module.exports = config;
