@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "a react blog system",
   "scripts": {
+    "eslint": "eslint -f table src/pages",
     "dll": "ENVIRONMENT=dev webpack --config webpack/config.dll.js",
     "start": "ENVIRONMENT=dev node webpack/server.js",
     "build": "ENVIRONMENT=prod webpack --progress --colors --display errors-only --config ./webpack/config.prod.js && cp -rf ./dist/index.html ./index.html",
